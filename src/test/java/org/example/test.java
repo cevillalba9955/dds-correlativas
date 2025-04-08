@@ -4,39 +4,33 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class TestMaterias {
-    Materia analisis = new Materia("Analisis");
-    Materia programacion = new Materia("Programacion");
-    Materia paradigmas = new Materia("Paradigmas");
-    Materia matematicas = new Materia("Matematicas");
-    Materia ciencias = new Materia("Ciencias");
-    Materia fisica = new Materia("Fisica");
-    Materia quimica = new Materia("Quimica");
+    Materia materia_sin_correlativas = new Materia("Analisis");
+    Materia materia_con_correlativas = new Materia("Programacion");
 
-    Alumno cesar = new Alumno("Cesar");
+    Alumno alumno = new Alumno("Cesar");
+
+    Inscripcion inscripcion = new Inscripcion(alumno);
 
     @Test
-    public void inscripcionAprobada() {
-        // Arrange
-        paradigmas.agregarCorrelativa(matematicas);
-        programacion.agregarCorrelativa(analisis);
-        cesar.agregarMateriaAprobada(analisis);
-
-        Inscripcion inscripcion = new Inscripcion(cesar);
-        inscripcion.inscribirMateria(programacion);
-
+    public void inscripcion_a_materia_sin_correlativas() {
+        inscripcion.inscribirMateria(materia_sin_correlativas);
         Assertions.assertEquals(true, inscripcion.aprobada());
     }
+
     @Test
-    public void inscripcionRechazada() {
+    public void inscripcion_a_materia_con_correlativa_NO_aprobadas() {
         // Arrange
-        paradigmas.agregarCorrelativa(matematicas);
-        programacion.agregarCorrelativa(analisis);
-        cesar.agregarMateriaAprobada(analisis);
-
-        Inscripcion inscripcion = new Inscripcion(cesar);
-        inscripcion.inscribirMateria(programacion);
-        inscripcion.inscribirMateria(paradigmas);
-
+        materia_con_correlativas.agregarCorrelativa(materia_sin_correlativas);
+        inscripcion.inscribirMateria(materia_con_correlativas);
         Assertions.assertEquals(false, inscripcion.aprobada());
+    }
+
+    @Test
+    public void inscripcion_a_materia_con_correlativa_aprobadas() {
+        // Arrange
+        materia_con_correlativas.agregarCorrelativa(materia_sin_correlativas);
+        alumno.agregarMateriaAprobada(materia_sin_correlativas);
+        inscripcion.inscribirMateria(materia_con_correlativas);
+        Assertions.assertEquals(true, inscripcion.aprobada());
     }
 }
