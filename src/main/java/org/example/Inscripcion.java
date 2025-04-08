@@ -1,16 +1,14 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Inscripcion {
     private final Alumno solicitante;
-    private List<Materia> materiasACursar;
+    private final List<Materia> materiasACursar = new ArrayList<>();
 
     public Inscripcion(Alumno alumno) {
         this.solicitante = alumno;
-        this.materiasACursar = new ArrayList<>() ;
     }
 
     public void inscribirMateria(Materia materia){

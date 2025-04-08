@@ -7,9 +7,6 @@ public class Main {
         Materia programacion = new Materia("Programacion");
         Materia paradigmas = new Materia("Paradigmas");
         Materia matematicas = new Materia("Matematicas");
-        Materia ciencias = new Materia("Ciencias");
-        Materia fisica = new Materia("Fisica");
-        Materia quimica = new Materia("Quimica");
 
         paradigmas.agregarCorrelativa(matematicas);
         programacion.agregarCorrelativa(analisis);

@@ -14,10 +14,6 @@ class Materia{
 
 class Alumno {
 - String nombre
-- String apellido
-- Integer dni
-- String email
-- Integer legajo
 - List<Materia> aprobadas
 + void agregarMateriaAprobada((Materia materia)
 + boolean puedeCursar(Materia materia)

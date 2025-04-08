@@ -7,12 +7,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Alumno {
-    private String nombre;
-    private String apellido;
-    private Integer dni;
-    private String email;
-    private Integer legajo;
-    private List<Materia> aprobadas;
+    @Getter
+    private final String nombre;
+
+    private final List<Materia> aprobadas;
 
     public Alumno(String nombre) {
         this.nombre = nombre;
